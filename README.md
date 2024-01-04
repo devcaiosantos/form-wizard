@@ -1,6 +1,5 @@
-
 # Wizard Form
-
+Autor: Caio Luiz dos Santos 
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter o [Node.js](https://nodejs.org/) instalado na sua máquina.
@@ -50,3 +49,7 @@ Abra no seu navegador o endereço http://localhost na porta que está configurad
  `PORT=3000`
  Abra:
  `http://localhost:3000`
+
+## 
+
+Aproveite o projeto! Se gostar, considere deixar uma ⭐️ no repositório.
