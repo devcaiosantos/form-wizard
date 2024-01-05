@@ -1,4 +1,4 @@
-# Wizard Form
+# Form Wizard
 Autor: Caio Luiz dos Santos 
 ## Pré-requisitos
 
