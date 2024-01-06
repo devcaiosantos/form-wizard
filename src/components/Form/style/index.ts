@@ -4,6 +4,7 @@ import { ButtonProps } from "./types";
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     max-width: 500px;
     padding: 1rem;
@@ -11,6 +12,7 @@ export const Form = styled.form`
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    height: 500px
 ` 
 export const FooterForm = styled.div`
     position: relative;
@@ -20,7 +22,6 @@ export const FooterForm = styled.div`
     width: 100%;
     height: max-content;
     margin-top: 1rem;
-
 `
 export const StepsCounter = styled.div`
     font-size: 1.2rem;

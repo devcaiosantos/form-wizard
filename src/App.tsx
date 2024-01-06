@@ -1,4 +1,4 @@
-import { Container, Title } from "./styles/app"
+import { Container, Title } from "./components/App/style"
 import  Form from "./components/Form"
 
 function App() {
@@ -6,7 +6,6 @@ function App() {
     <Container>
      <Title>Cadastro de Usuário</Title>
        <Form/>
-       
     </Container>
   )
 }
