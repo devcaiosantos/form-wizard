@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form, FooterForm, StepsCounter } from "./style"
 import Step1 from "./Tabs/Step1";
 import Step2 from "./Tabs/Step2";
@@ -33,11 +33,7 @@ export default function FormComponent() {
 
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState<FormData>(defaultFormData);
-    useEffect(
-        ()=>{
-            console.log(formData.step2)
-        },[formData]
-    )
+ 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         console.log(e.currentTarget);

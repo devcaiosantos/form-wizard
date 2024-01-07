@@ -5,6 +5,7 @@ import { object, string, number,ValidationError } from 'yup';
 import { states } from "../../../utils/states";
 import getAddressByCEP from "../../../services/brasilAPI/getAddressByCEP";
 import isValidCEP  from "../../../utils/isValidCEP";
+import useDebounceStr from "../../../hooks/useDebounceStr";
 
 const step2YupSchema = object({
     cep: string().required().test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
@@ -22,29 +23,13 @@ interface Step2Props {
 
 export default function Step2({data, setData, setStep}:Step2Props) {
     const [errors, setErrors] = useState<Record<string, string>>({});
-    const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null);
+    const debouncedCEP = useDebounceStr(data.step2.cep, 500);
 
     useEffect(() => {
-        // Cancela a chamada anterior se existir
-        if (debounceTimer) {
-          clearTimeout(debounceTimer);
+        if(debouncedCEP.length==8){
+            autoFillAddressByCEP(debouncedCEP);
         }
-    
-        // Inicia um novo timer para a chamada debounce
-        const timerId = setTimeout(() => {
-          autoFillAddressByCEP(data.step2.cep);
-        }, 500);
-    
-        // Atualiza o estado com o novo timer
-        setDebounceTimer(timerId);
-    
-        // Limpa o timer ao desmontar o componente
-        return () => {
-          if (debounceTimer) {
-            clearTimeout(debounceTimer);
-          }
-        };
-      }, [data.step2.cep]);
+    }, [debouncedCEP])
 
     async function autoFillAddressByCEP(cep: string){
         const response = await getAddressByCEP(cep);
@@ -76,7 +61,6 @@ export default function Step2({data, setData, setStep}:Step2Props) {
                 yupErrors.inner.forEach((e) => {
                   newErrors[e.path as string] = e.message;
                 });
-                console.log(newErrors)
                 setErrors(newErrors);
             }
         }
