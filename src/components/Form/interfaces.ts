@@ -26,3 +26,9 @@ export interface FormData {
     step2: Step2Data;
     step3: Step3Data;
 }
+
+export interface State {
+    id: number,
+    sigla: string,
+    nome: string
+}

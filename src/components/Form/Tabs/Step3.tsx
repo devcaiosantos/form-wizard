@@ -1,4 +1,4 @@
-import { Tab } from "./style/style"
+import { Tab } from "./style"
 import { FormData } from "../interfaces"
 
 interface Step3Props {
