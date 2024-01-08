@@ -7,7 +7,7 @@ import  isValidCPF  from "../../../utils/isValidCPF";
 const step1YupSchema = object({
   name: string().required(),
   lastname: string().required(),
-  cpf: string() .test('valid-cpf', 'CPF inválido', (value) => isValidCPF(value)),
+  cpf: string().test('valid-cpf', 'CPF inválido', (value) => isValidCPF(value)),
   email: string().email().required(),
   password: string().min(8).required(),
 });
@@ -23,7 +23,14 @@ export default function Step1({data,setData, setStep}:Step1Props) {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.currentTarget;
-        const newStep1 = { ...data.step1, [name]: value };
+        
+        let newStep1 = { ...data.step1, [name]: value };
+
+        if(name == "cpf"){
+            const maskedCPF = value.replace(/\D/g, "").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4")
+            newStep1 = { ...data.step1, [name]: maskedCPF };
+        }
+
         setData({ ...data, step1: newStep1 });
     }
 
