@@ -8,9 +8,9 @@ import isValidCEP  from "../../../utils/isValidCEP";
 import useDebounceStr from "../../../hooks/useDebounceStr";
 
 const step2YupSchema = object({
-    cep: string().required().test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
+    cep: string().required().min(9).max(9).test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
     city: string().required(),
-    state: string().required(),
+    state: string().max(2).required(),
     street: string().required(),
     number: number().min(1).required(),
 });
@@ -26,7 +26,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
     const debouncedCEP = useDebounceStr(data.step2.cep, 500);
 
     useEffect(() => {
-        if(debouncedCEP.length==8){
+        if(debouncedCEP.length==9){
             autoFillAddressByCEP(debouncedCEP);
         }
     }, [debouncedCEP])
@@ -38,12 +38,15 @@ export default function Step2({data, setData, setStep}:Step2Props) {
             const newStep2 = { ...data.step2, city, state, street };
             setData({ ...data, step2: newStep2 });
         }
-
     }
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement> ): void => {
         const { name, value } = e.currentTarget;
-        const newStep2 = { ...data.step2, [name]: value };
+        let newStep2 = { ...data.step2, [name]: value };
+        if(name=="cep"){
+            const maskedCEP = value.replace(/\D/g, "").replace(/(\d{5})(\d{3})/g, "$1-$2")
+            newStep2 = { ...data.step2, [name]: maskedCEP };
+        }
         setData({ ...data, step2: newStep2 });
     }
     
@@ -72,7 +75,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
             <div style={{display:"flex", flexDirection:"column", gap:5, marginBottom: 10 }}>
                 <h3>Dados de Endereço:</h3>
                 <label>CEP</label>
-                <input type="text" name="cep" value={cep} onChange={handleChangeInput}/>
+                <input type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
                 <label>Cidade</label>
                 <input type="text" name="city" value={city} onChange={handleChangeInput} />
                 <label>Estado</label>
@@ -85,7 +88,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
                 <label>Rua</label>
                 <input type="text" name="street" value={street} onChange={handleChangeInput} />
                 <label>Número da residência</label>
-                <input type="number" name="number" value={number} onChange={handleChangeInput} />
+                <input type="number" name="number" min={1} value={number} onChange={handleChangeInput} />
                 {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
             </div>
            

@@ -7,7 +7,7 @@ import  isValidCPF  from "../../../utils/isValidCPF";
 const step1YupSchema = object({
   name: string().required(),
   lastname: string().required(),
-  cpf: string().test('valid-cpf', 'CPF inválido', (value) => isValidCPF(value)),
+  cpf: string().min(14).max(14).test('valid-cpf', 'CPF inválido', (value) => isValidCPF(value)),
   email: string().email().required(),
   password: string().min(8).required(),
 });
@@ -69,7 +69,7 @@ export default function Step1({data,setData, setStep}:Step1Props) {
                 <label>Sobrenome</label>
                 <input type="text" name="lastname" value={lastname} onChange={handleChange}/>
                 <label>CPF</label>
-                <input type="text" name="cpf" value={cpf} onChange={handleChange}  />
+                <input type="text" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
                 <label>E-mail</label>
                 <input type="email" name="email" value={email} onChange={handleChange} />
                 <label>Senha</label>

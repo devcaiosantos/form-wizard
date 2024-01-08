@@ -6,8 +6,8 @@ import isValidRG from "../../../utils/isValidRG";
 const step3YupSchema = object({
     rep_name: string().required(),
     relationship: string().required(),
-    rep_rg: string().required().test('valid-rg', 'RG inválido', (value) => isValidRG(value)),
-    rep_phone: string().required(),
+    rep_rg: string().required().min(12).max(12).test('valid-rg', 'RG inválido', (value) => isValidRG(value)),
+    rep_phone: string().min(14).max(15).required(),
 });
 
 
@@ -20,9 +20,20 @@ interface Step3Props {
 export default function Step3({data,setData,setStep}:Step3Props) {
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => { 
         const { name, value } = e.currentTarget;
-        const newStep3 = { ...data.step3, [name]: value };
+        let newStep3 = { ...data.step3, [name]: value }
+
+        if(name=="rep_rg"){
+            const maskedRG = value.replace(/\D/g, "").replace(/(\d{2})(\d{3})(\d{3})(\d{1})/g, "$1.$2.$3-$4")
+            newStep3 = { ...data.step3, [name]: maskedRG };
+        }
+
+        if(name=="rep_phone"){
+            const maskedPhone = value.replace(/\D/g, "").replace(/(\d{2})(\d{4,5})(\d{4})/, "($1) $2-$3");
+            newStep3 = { ...data.step3, [name]: maskedPhone };
+        }
+
         setData({ ...data, step3: newStep3 });
     }
 
@@ -45,7 +56,6 @@ export default function Step3({data,setData,setStep}:Step3Props) {
         }
     }
 
-
     const { rep_name, relationship, rep_phone, rep_rg  } = data.step3; 
 
     return (
@@ -56,9 +66,9 @@ export default function Step3({data,setData,setStep}:Step3Props) {
             <label>Grau de parentesco:</label>
             <input type="text" name="relationship" value={relationship} onChange={handleChange} />
             <label>RG:</label>
-            <input type="text" name="rep_rg" value={rep_rg} onChange={handleChange}/>
+            <input type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
             <label>Telefone:</label>
-            <input type="phone" name="rep_phone" value={rep_phone} onChange={handleChange}/>
+            <input type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
             {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(2)}>

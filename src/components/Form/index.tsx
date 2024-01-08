@@ -47,7 +47,7 @@ export default function FormComponent() {
             case 3:
                 return <Step3 data={formData} setData={setFormData} setStep={setCurrentStep}/>;
             case 4:
-                return <Step4 data={formData}/>;
+                return <Step4 data={formData} setStep={setCurrentStep}/>;
             default:
                 return null;
         }
