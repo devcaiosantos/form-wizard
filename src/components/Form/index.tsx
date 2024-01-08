@@ -36,7 +36,6 @@ export default function FormComponent() {
  
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        console.log(e.currentTarget);
     };
 
     const renderStep = (step: number) => {
@@ -46,7 +45,7 @@ export default function FormComponent() {
             case 2:
                 return <Step2 data={formData} setData={setFormData} setStep={setCurrentStep}/>;
             case 3:
-                return <Step3 data={formData} setData={setFormData}/>;
+                return <Step3 data={formData} setData={setFormData} setStep={setCurrentStep}/>;
             case 4:
                 return <Step4 data={formData}/>;
             default:

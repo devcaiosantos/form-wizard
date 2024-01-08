@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Tab, ButtonGroup, Button } from "./style";
 import { FormData } from "../interfaces";
 import { object, string, ValidationError } from 'yup';
@@ -20,12 +20,6 @@ interface Step1Props {
 
 export default function Step1({data,setData, setStep}:Step1Props) {
     const [errors, setErrors] = useState<Record<string, string>>({});
-
-    useEffect(
-        ()=>{
-            console.log(errors)
-        },[errors]
-    )
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.currentTarget;

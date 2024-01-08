@@ -12,7 +12,7 @@ const step2YupSchema = object({
     city: string().required(),
     state: string().required(),
     street: string().required(),
-    number: number().required(),
+    number: number().min(1).required(),
 });
 
 interface Step2Props {
