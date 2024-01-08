@@ -6,8 +6,7 @@ const ResetCSS = createGlobalStyle`
     body{
         padding: 0;
         margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #fff;
+        font-family: 'Plus Jakarta Sans', sans-serif;
     }
     a{
         text-decoration: none;

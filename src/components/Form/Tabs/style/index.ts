@@ -7,6 +7,13 @@ export const Tab = styled.div`
     margin-bottom: 1rem;
 `
 
+export const Title = styled.h2`
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: ${({theme}) => theme.text};
+    margin-bottom: 1rem;
+`
+
 export const ButtonGroup = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -33,4 +40,12 @@ export const Button = styled.button<StyledButtonProps>`
         background-color: #999;
         cursor: not-allowed;
     }
+`
+
+export const InputGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 1rem;
 `

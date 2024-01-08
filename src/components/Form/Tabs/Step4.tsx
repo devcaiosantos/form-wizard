@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Tab, ButtonGroup, Button } from "./style";
 import { FormData } from "../interfaces";
 
@@ -7,22 +8,37 @@ interface Step4Props {
 }
 
 export default function Step4({data, setStep}:Step4Props) {
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const handleSubmission = () => {
+        setIsLoading(true)
+        /*Simula uma requisição post */
+        setTimeout(() => {
+            setIsLoading(false)
+            setStep(0);
+        }, 3000);
+    }
+
     return (
         <Tab>
             <h3>Confirmação de Informações:</h3>
-           <p>
+            <p>
             {JSON.stringify(data.step1)}
-           </p>
-           <p>
+            </p>
+            <p>
             {JSON.stringify(data.step2)}
-           </p>
-           <p>
+            </p>
+            <p>
             {JSON.stringify(data.step3)}
-           </p>
-           <ButtonGroup>
-                    <Button type="button" onClick={() => setStep(3)}>
-                        Voltar
-                    </Button>
+            </p>
+            {isLoading && "Cadastrando..."}
+            <ButtonGroup>
+                <Button type="button" onClick={() => setStep(3)}>
+                    Voltar
+                </Button>
+                <Button type="button" onClick={handleSubmission} >
+                    Cadastrar
+                </Button>
             </ButtonGroup>
         </Tab>
     );

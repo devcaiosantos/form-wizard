@@ -7,7 +7,7 @@ import ResetCSS from './styles/resets.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme.light}>
       <ResetCSS/>
       <App/>
     </ThemeProvider>

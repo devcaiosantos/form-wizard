@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Tab, ButtonGroup, Button } from "./style";
+import FloatingLabelInput from "../../FloatingLabelInput";
+import { Tab, Title, ButtonGroup, Button, InputGroup } from "./style";
 import { FormData } from "../interfaces";
 import { object, string, ValidationError } from 'yup';
 import  isValidCPF  from "../../../utils/isValidCPF";
 
 const step1YupSchema = object({
-  name: string().required(),
-  lastname: string().required(),
+  name: string().required("Nome é obrigatório"),
+  lastname: string().required("Sobrenome é obrigatório"),
   cpf: string().min(14).max(14).test('valid-cpf', 'CPF inválido', (value) => isValidCPF(value)),
-  email: string().email().required(),
-  password: string().min(8).required(),
+  email: string().email("E-mail inválido").required("E-mail é obrigatório"),
+  password: string().min(8,"A senha precisa ter pelo menos 8 caracteres").required("Senha é obrigatória"),
 });
 
 interface Step1Props {
@@ -62,21 +63,17 @@ export default function Step1({data,setData, setStep}:Step1Props) {
 
     return (
         <Tab>
-            <div style={{display:"flex", flexDirection:"column", gap:5, marginBottom: 10 }}>
-                <h3>Informações Básicas do Usuário:</h3>
-                <label>Nome</label>
-                <input type="text" name="name" value={name} onChange={handleChange} />
-                <label>Sobrenome</label>
-                <input type="text" name="lastname" value={lastname} onChange={handleChange}/>
-                <label>CPF</label>
-                <input type="text" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
-                <label>E-mail</label>
-                <input type="email" name="email" value={email} onChange={handleChange} />
-                <label>Senha</label>
-                <input type="password" name="password" value={password} onChange={handleChange} />
+            
+            <Title>Informações Básicas do Usuário:</Title>
+            <InputGroup>
+                <FloatingLabelInput label={"Nome "} errorMessage={errors.name} type="text" name="name" value={name} onChange={handleChange} />
+                <FloatingLabelInput label={"Sobrenome"} errorMessage={errors.lastname}  type="text" name="lastname" value={lastname} onChange={handleChange} />
+                <FloatingLabelInput label={"CPF"} errorMessage={errors.cpf} type="text" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
+                <FloatingLabelInput label={"E-mail"} errorMessage={errors.email} type="email" name="email" value={email} onChange={handleChange} />
+                <FloatingLabelInput label={"Senha"} errorMessage={errors.password} type="password" name="password" value={password} onChange={handleChange} />
                 
                 {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
-            </div>
+            </InputGroup>
             <ButtonGroup>
                     <Button 
                         type="button" 
