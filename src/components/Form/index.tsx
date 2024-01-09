@@ -6,6 +6,7 @@ import Step3 from "./Tabs/Step3";
 import Step4 from "./Tabs/Step4";
 import SubmissionSuccess from "./Tabs/SubmissionSuccess";
 import { FormData } from "./interfaces";
+import { states } from "../../utils/states";
 
 export const defaultFormData = {
     step1: {
@@ -18,9 +19,9 @@ export const defaultFormData = {
     step2: {
         cep: "",
         city: "",
-        state: "",
+        state: states[0].ac,
         street: "",
-        number: 0
+        number: 1
     },
     step3: {
         rep_name: "",

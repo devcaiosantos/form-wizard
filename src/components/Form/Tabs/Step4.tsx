@@ -36,7 +36,7 @@ export default function Step4({data, setStep}:Step4Props) {
                 <Button type="button" onClick={() => setStep(3)}>
                     Voltar
                 </Button>
-                <Button type="button" onClick={handleSubmission} >
+                <Button type="submit" onClick={handleSubmission} >
                     Cadastrar
                 </Button>
             </ButtonGroup>

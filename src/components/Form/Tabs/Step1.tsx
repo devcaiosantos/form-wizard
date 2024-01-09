@@ -76,7 +76,7 @@ export default function Step1({data,setData, setStep}:Step1Props) {
             </InputGroup>
             <ButtonGroup>
                     <Button 
-                        type="button" 
+                        type="submit" 
                         onClick={(e) => handleNextStep(e)}
                     >
                         Próximo

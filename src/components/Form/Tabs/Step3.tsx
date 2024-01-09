@@ -74,7 +74,7 @@ export default function Step3({data,setData,setStep}:Step3Props) {
                     <Button type="button" onClick={() => setStep(2)}>
                         Voltar
                     </Button>
-                    <Button type="button"  onClick={(e) => handleNextStep(e)}>
+                    <Button type="submit"  onClick={(e) => handleNextStep(e)}>
                         Próximo
                     </Button>
             </ButtonGroup>

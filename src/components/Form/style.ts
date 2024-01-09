@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,7 +15,7 @@ export const Container = styled.div`
     height: 600px;
     padding: 2rem;
 ` 
-export const Footer = styled.form`
+export const Footer = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
