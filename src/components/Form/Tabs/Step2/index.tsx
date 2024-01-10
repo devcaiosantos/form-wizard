@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import FloatingLabelInput from "../../FloatingLabelInput";
-import FloatingLabelSelect from "../../FloatingLabelSelect";
-import { Tab, Title, InputGroup, ButtonGroup, Button } from "./style"
-import { FormData } from "../interfaces"
+import FloatingLabelInput from "../../../FloatingLabelInput";
+import FloatingLabelSelect from "../../../FloatingLabelSelect";
+import { Tab, Container, Title, InputGroup, ButtonGroup, Button } from "../style"
+import { FormData } from "../../interfaces"
 import { object, string, number,ValidationError } from 'yup';
-import { states } from "../../../utils/states";
-import getAddressByCEP from "../../../services/brasilAPI/getAddressByCEP";
-import isValidCEP  from "../../../utils/isValidCEP";
-import useDebounceStr from "../../../hooks/useDebounceStr";
+import { states } from "../../../../utils/states";
+import getAddressByCEP from "../../../../services/brasilAPI/getAddressByCEP";
+import isValidCEP  from "../../../../utils/isValidCEP";
+import useDebounceStr from "../../../../hooks/useDebounceStr";
 
 const step2YupSchema = object({
     cep: string().required().min(9).max(9).test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
@@ -74,17 +74,18 @@ export default function Step2({data, setData, setStep}:Step2Props) {
     const { cep, city, state, street,number } = data.step2;
     return (
         <Tab>
-            <Title>Endereço:</Title>
-            <InputGroup>
-                <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
-                <FloatingLabelInput label="Cidade" errorMessage={errors.city} type="text" name="city" value={city} onChange={handleChangeInput}/>
-                <FloatingLabelSelect label="Estado" errorMessage={errors.state} name="state" value={state} onChange={handleChangeInput}>
-                    {states.map((state,i) => <option key={i} value={state.ac}>{state.name}</option>)}
-                </FloatingLabelSelect>
-                <FloatingLabelInput label="Rua" errorMessage={errors.street} type="text" name="street" value={street} onChange={handleChangeInput}/>
-                <FloatingLabelInput label="Número" errorMessage={errors.number} type="number" name="number" min={1} value={number} onChange={handleChangeInput}/>
-                {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
-            </InputGroup>            
+            <Container>
+                <Title>Endereço:</Title>
+                <InputGroup>
+                    <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
+                    <FloatingLabelInput label="Cidade" errorMessage={errors.city} type="text" name="city" value={city} onChange={handleChangeInput}/>
+                    <FloatingLabelSelect label="Estado" errorMessage={errors.state} name="state" value={state} onChange={handleChangeInput}>
+                        {states.map((state,i) => <option key={i} value={state.ac}>{state.name}</option>)}
+                    </FloatingLabelSelect>
+                    <FloatingLabelInput label="Rua" errorMessage={errors.street} type="text" name="street" value={street} onChange={handleChangeInput}/>
+                    <FloatingLabelInput label="Número" errorMessage={errors.number} type="number" name="number" min={1} value={number} onChange={handleChangeInput}/>
+                </InputGroup>            
+            </Container>
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(1)}>
                         Voltar

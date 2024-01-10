@@ -1,9 +1,9 @@
 import { useState } from "react"
-import  FloatingLabelInput  from "../../FloatingLabelInput";
-import { Tab, Title, InputGroup,ButtonGroup, Button } from "./style"
-import { FormData } from "../interfaces"
+import  FloatingLabelInput  from "../../../FloatingLabelInput";
+import { Tab, Container, Title, InputGroup,ButtonGroup, Button } from "../style"
+import { FormData } from "../../interfaces"
 import { object, string, ValidationError } from 'yup';
-import isValidRG from "../../../utils/isValidRG";
+import isValidRG from "../../../../utils/isValidRG";
 const step3YupSchema = object({
     rep_name: string().required("Nome é obrigatório"),
     relationship: string().required("Grau de parentesco é obrigatório"),
@@ -61,14 +61,15 @@ export default function Step3({data,setData,setStep}:Step3Props) {
 
     return (
         <Tab>
-            <Title>Informações Representante Legal</Title>
-            <InputGroup>
-                <FloatingLabelInput label="Nome" errorMessage={errors.rep_name} type="text" name="rep_name" value={rep_name} onChange={handleChange}/>
-                <FloatingLabelInput label="Grau de parentesco" errorMessage={errors.relationship} type="text" name="relationship" value={relationship} onChange={handleChange}/>
-                <FloatingLabelInput label="RG" errorMessage={errors.rep_rg} type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
-                <FloatingLabelInput label="Telefone" errorMessage={errors.rep_phone} type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
-                {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
-            </InputGroup>
+            <Container>
+                <Title>Informações Representante Legal</Title>
+                <InputGroup>
+                    <FloatingLabelInput label="Nome" errorMessage={errors.rep_name} type="text" name="rep_name" value={rep_name} onChange={handleChange}/>
+                    <FloatingLabelInput label="Grau de parentesco" errorMessage={errors.relationship} type="text" name="relationship" value={relationship} onChange={handleChange}/>
+                    <FloatingLabelInput label="RG" errorMessage={errors.rep_rg} type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
+                    <FloatingLabelInput label="Telefone" errorMessage={errors.rep_phone} type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
+                </InputGroup>
+            </Container>
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(2)}>
                         Voltar

@@ -1,11 +1,36 @@
 import styled from 'styled-components'
 import { StyledButtonProps } from './types'
+
 export const Tab = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    margin-bottom: 1rem;
+    height: 500px;
+    justify-content: space-between;
+`
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    height: 480px;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-y: auto;
+      /* Estilo da barra de rolagem para navegadores WebKit (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${({theme})=>theme.primary}; /* Cor do botão de rolagem */
+        border-radius: 6px; /* Cantos arredondados do botão de rolagem */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Cor de fundo da barra de rolagem */
+        border-radius: 6px; /* Cantos arredondados da barra de rolagem */
+    }
 `
 
 export const Title = styled.h2`
@@ -13,18 +38,18 @@ export const Title = styled.h2`
     font-weight: 600;
     color: ${({theme}) => theme.text};
     margin-bottom: 1rem;
-
 `
 
 export const ButtonGroup = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
-    gap: 73%;
+    margin-top: 1rem;
 `
 
 export const Button = styled.button<StyledButtonProps>`
+    min-width: 100px;
     width: max-content;
     padding: 0.5rem;
     border: none;
@@ -48,6 +73,5 @@ export const InputGroup = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 1rem;
     gap: 1rem;
 `
