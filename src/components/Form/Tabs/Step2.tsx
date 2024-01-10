@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FloatingLabelInput from "../../FloatingLabelInput";
 import FloatingLabelSelect from "../../FloatingLabelSelect";
-import { Tab, InputGroup, ButtonGroup, Button } from "./style"
+import { Tab, Title, InputGroup, ButtonGroup, Button } from "./style"
 import { FormData } from "../interfaces"
 import { object, string, number,ValidationError } from 'yup';
 import { states } from "../../../utils/states";
@@ -74,6 +74,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
     const { cep, city, state, street,number } = data.step2;
     return (
         <Tab>
+            <Title>Endereço:</Title>
             <InputGroup>
                 <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
                 <FloatingLabelInput label="Cidade" errorMessage={errors.city} type="text" name="city" value={city} onChange={handleChangeInput}/>

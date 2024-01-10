@@ -4,7 +4,7 @@ import Step1 from "./Tabs/Step1";
 import Step2 from "./Tabs/Step2";
 import Step3 from "./Tabs/Step3";
 import Step4 from "./Tabs/Step4";
-import SubmissionSuccess from "./Tabs/SubmissionSuccess";
+import Success from "./Tabs/Success";
 import { FormData } from "./interfaces";
 import { states } from "../../utils/states";
 
@@ -39,7 +39,7 @@ export default function FormComponent() {
     const renderStep = (step: number) => {
         switch(step) {
             case 0:
-                return <SubmissionSuccess setStep={setCurrentStep} setData={setFormData} defaultData={defaultFormData}/>;
+                return <Success setStep={setCurrentStep} setData={setFormData} defaultData={defaultFormData}/>;
             case 1:
                 return <Step1 data={formData} setData={setFormData} setStep={setCurrentStep} />;
             case 2:
@@ -57,9 +57,14 @@ export default function FormComponent() {
         <Container>
             {renderStep(currentStep)}
             <Footer>
-                <StepsCounter>
-                    {currentStep+"/4"}
-                </StepsCounter>
+                {
+                    currentStep ?
+                    <StepsCounter>
+                        {currentStep+"/4"}
+                    </StepsCounter>
+                    : ""
+                }
+                
             </Footer>
         </Container>
     )

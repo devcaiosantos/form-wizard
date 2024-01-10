@@ -1,13 +1,14 @@
 import { useState } from "react"
-import { Tab, ButtonGroup, Button } from "./style"
+import  FloatingLabelInput  from "../../FloatingLabelInput";
+import { Tab, Title, InputGroup,ButtonGroup, Button } from "./style"
 import { FormData } from "../interfaces"
 import { object, string, ValidationError } from 'yup';
 import isValidRG from "../../../utils/isValidRG";
 const step3YupSchema = object({
-    rep_name: string().required(),
-    relationship: string().required(),
+    rep_name: string().required("Nome é obrigatório"),
+    relationship: string().required("Grau de parentesco é obrigatório"),
     rep_rg: string().required().min(12).max(12).test('valid-rg', 'RG inválido', (value) => isValidRG(value)),
-    rep_phone: string().min(14).max(15).required(),
+    rep_phone: string().min(14).max(15).required("Telefone é obrigatório"),
 });
 
 
@@ -60,16 +61,14 @@ export default function Step3({data,setData,setStep}:Step3Props) {
 
     return (
         <Tab>
-            <h3>Dados do Representante Legal:</h3>
-            <label>Nome:</label>
-            <input type="text" name="rep_name" value={rep_name} onChange={handleChange} />
-            <label>Grau de parentesco:</label>
-            <input type="text" name="relationship" value={relationship} onChange={handleChange} />
-            <label>RG:</label>
-            <input type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
-            <label>Telefone:</label>
-            <input type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
-            {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
+            <Title>Informações Representante Legal</Title>
+            <InputGroup>
+                <FloatingLabelInput label="Nome" errorMessage={errors.rep_name} type="text" name="rep_name" value={rep_name} onChange={handleChange}/>
+                <FloatingLabelInput label="Grau de parentesco" errorMessage={errors.relationship} type="text" name="relationship" value={relationship} onChange={handleChange}/>
+                <FloatingLabelInput label="RG" errorMessage={errors.rep_rg} type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
+                <FloatingLabelInput label="Telefone" errorMessage={errors.rep_phone} type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
+                {JSON.stringify(errors)!="{}" && "Preencha corretamente todos os campos"}
+            </InputGroup>
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(2)}>
                         Voltar

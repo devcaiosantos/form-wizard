@@ -10,7 +10,8 @@ interface Step4Props {
 export default function Step4({data, setStep}:Step4Props) {
     const [isLoading, setIsLoading] = useState(false);
     
-    const handleSubmission = () => {
+    const handleSubmit = (e:React.MouseEvent<HTMLButtonElement> ) => {
+        e.preventDefault();
         setIsLoading(true)
         /*Simula uma requisição post */
         setTimeout(() => {
@@ -36,7 +37,7 @@ export default function Step4({data, setStep}:Step4Props) {
                 <Button type="button" onClick={() => setStep(3)}>
                     Voltar
                 </Button>
-                <Button type="submit" onClick={handleSubmission} >
+                <Button type="submit" onClick={(e)=>handleSubmit(e)} >
                     Cadastrar
                 </Button>
             </ButtonGroup>

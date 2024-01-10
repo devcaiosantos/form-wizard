@@ -4,14 +4,16 @@ export const Tab = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     margin-bottom: 1rem;
 `
 
 export const Title = styled.h2`
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     color: ${({theme}) => theme.text};
     margin-bottom: 1rem;
+
 `
 
 export const ButtonGroup = styled.div`
