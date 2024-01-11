@@ -4,6 +4,7 @@ import { Tab, Container, Title, InputGroup,ButtonGroup, Button } from "../style"
 import { FormData } from "../../interfaces"
 import { object, string, ValidationError } from 'yup';
 import isValidRG from "../../../../utils/isValidRG";
+import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 const step3YupSchema = object({
     rep_name: string().required("Nome é obrigatório"),
     relationship: string().required("Grau de parentesco é obrigatório"),
@@ -62,7 +63,7 @@ export default function Step3({data,setData,setStep}:Step3Props) {
     return (
         <Tab>
             <Container>
-                <Title>Informações Representante Legal</Title>
+                <Title>Informações Representante Legal:</Title>
                 <InputGroup>
                     <FloatingLabelInput label="Nome" errorMessage={errors.rep_name} type="text" name="rep_name" value={rep_name} onChange={handleChange}/>
                     <FloatingLabelInput label="Grau de parentesco" errorMessage={errors.relationship} type="text" name="relationship" value={relationship} onChange={handleChange}/>
@@ -72,10 +73,10 @@ export default function Step3({data,setData,setStep}:Step3Props) {
             </Container>
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(2)}>
-                        Voltar
+                    <FaRegArrowAltCircleLeft/> Voltar
                     </Button>
                     <Button type="submit"  onClick={(e) => handleNextStep(e)}>
-                        Próximo
+                        Próximo <FaRegArrowAltCircleRight/>
                     </Button>
             </ButtonGroup>
         </Tab>

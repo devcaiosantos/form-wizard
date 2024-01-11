@@ -15,4 +15,8 @@ export const Title = styled.h1`
     font-weight: 500;
     color: ${({theme}) => theme.text};
     margin-bottom: 1rem;
+    @media (max-width: 500px) {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
 `

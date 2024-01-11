@@ -8,6 +8,7 @@ import { states } from "../../../../utils/states";
 import getAddressByCEP from "../../../../services/brasilAPI/getAddressByCEP";
 import isValidCEP  from "../../../../utils/isValidCEP";
 import useDebounceStr from "../../../../hooks/useDebounceStr";
+import {FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 const step2YupSchema = object({
     cep: string().required().min(9).max(9).test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
@@ -88,10 +89,10 @@ export default function Step2({data, setData, setStep}:Step2Props) {
             </Container>
             <ButtonGroup>
                     <Button type="button" onClick={() => setStep(1)}>
-                        Voltar
+                      <FaRegArrowAltCircleLeft/>  Voltar
                     </Button>
                     <Button type="submit"  onClick={(e) => handleNextStep(e)}>
-                        Próximo
+                        Próximo <FaRegArrowAltCircleRight/>
                     </Button>
             </ButtonGroup>
         </Tab>

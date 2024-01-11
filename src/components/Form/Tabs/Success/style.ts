@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FaCheckCircle } from 'react-icons/fa'
 
-export const Container = styled.form`
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@ export const SuccessIcon = styled(FaCheckCircle)`
 `
 
 export const SuccessMessage = styled.p`
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: ${({theme}) => theme.text};
     margin-bottom: 2rem;

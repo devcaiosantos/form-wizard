@@ -5,7 +5,7 @@ const bounceAnimation = keyframes`
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
 `;
 
@@ -19,7 +19,7 @@ export const BouncingBalls = styled.div`
     background-color: ${({theme}) => theme.primary};
     border-radius: 50%;
     margin: 0 5px;
-    animation: ${bounceAnimation} 1.5s infinite ease-in-out;
+    animation: ${bounceAnimation} 1.0s infinite ease-in-out;
   }
 
   div:nth-child(2) {

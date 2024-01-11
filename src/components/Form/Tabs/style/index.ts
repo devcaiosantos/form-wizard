@@ -4,9 +4,9 @@ import { StyledButtonProps } from './types'
 export const Tab = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 500px;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 `
 export const Container = styled.div`
     display: flex;
@@ -31,6 +31,11 @@ export const Container = styled.div`
         background-color: transparent; /* Cor de fundo da barra de rolagem */
         border-radius: 6px; /* Cantos arredondados da barra de rolagem */
     }
+    @media (max-width: 500px) {
+        width: 100%;
+        height: 480px;
+    }
+
 `
 
 export const Title = styled.h2`
@@ -38,6 +43,10 @@ export const Title = styled.h2`
     font-weight: 600;
     color: ${({theme}) => theme.text};
     margin-bottom: 1rem;
+    @media (max-width: 500px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
 `
 
 export const ButtonGroup = styled.div`
@@ -46,17 +55,28 @@ export const ButtonGroup = styled.div`
     align-items: center;
     width: 100%;
     margin-top: 1rem;
+    margin-bottom: 1rem;
+    @media (max-width: 500px) {
+        margin-top: 0.5rem;
+        bottom: 0;
+    }
 `
 
 export const Button = styled.button<StyledButtonProps>`
-    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 120px;
     width: max-content;
+    height: 44px;
     padding: 0.5rem;
     border: none;
     border-radius: 4px;
     background-color: #333;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+    font-weight: 550;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
    

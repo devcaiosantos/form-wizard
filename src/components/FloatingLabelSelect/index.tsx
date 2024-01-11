@@ -7,14 +7,12 @@ interface FloatingLabelSelectProps extends React.SelectHTMLAttributes<HTMLSelect
 }
 
 const FloatingLabelSelect: React.FC<FloatingLabelSelectProps> = ({ label, errorMessage, ...props }) => {
-  const [isFloating, setIsFloating] = useState(false);
+  const [isFloating, setIsFloating] = useState(!!props.value);
 
-  useEffect(
-    () => {
+  useEffect(() => {
       setIsFloating(!!props.value);
-    },
-    [props.value]
-  )
+  },
+  [props.value])
 
   const handleFocus = () => {
     setIsFloating(true);
@@ -29,7 +27,7 @@ const FloatingLabelSelect: React.FC<FloatingLabelSelectProps> = ({ label, errorM
   return (
     <InputWrapper>
       <Label focused={isFloating}>{label}</Label>
-      <SelectInput onFocus={handleFocus} onBlur={handleBlur} {...props}>
+      <SelectInput onFocus={handleFocus} onBlur={handleBlur} {...props} autoComplete="off">
         {props.children}
       </SelectInput>
       <ErrorMessage>{errorMessage}</ErrorMessage>

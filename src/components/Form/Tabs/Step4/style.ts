@@ -7,6 +7,10 @@ export const StepTitle = styled.h2`
     margin-bottom: 1rem;
     width: 100%;
     text-align: center;
+    @media (max-width: 500px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
 `
 
 export const StepContent = styled.div`
@@ -17,6 +21,9 @@ export const StepContent = styled.div`
     border: 2px solid ${({theme}) => theme.text};
     padding: 1rem;
     border-radius: 10px;
+    @media (max-width: 500px) {
+        padding: 0.5rem;
+    }
 `
 
 export const ContentField = styled.span`
@@ -35,10 +42,12 @@ export const LinkToStep = styled.a`
     cursor: pointer;
     transition: 0.2s;
     text-align: right;
-   // border-bottom: 1px solid ${({theme}) => theme.primary};
     width: 100%;
     &:hover {
         color: ${({theme}) => theme.secondary};
+    }
+    @media (max-width: 500px) {
+        font-size: 0.9rem;
     }
 `
 

@@ -1,6 +1,7 @@
 import { Container, Title, SuccessIcon,SuccessMessage } from "./style"
 import { Tab, Button } from "../style"
 import { FormData } from "../../interfaces"
+import { FaUserPlus } from "react-icons/fa";
 
 interface SubmissionSuccessProps{
     setStep: React.Dispatch<React.SetStateAction<number>>,
@@ -24,7 +25,7 @@ export default function SubmissionSuccess({setStep, setData, defaultData}:Submis
                     Cadastro realizado com sucesso
                 </SuccessMessage>
                 <Button type="button" onClick={(e)=>handleNewSubmit(e)}>
-                    Novo usuário
+                    Novo usuário <FaUserPlus />
                 </Button>
             </Container>
         </Tab>

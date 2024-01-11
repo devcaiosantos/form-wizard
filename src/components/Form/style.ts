@@ -14,6 +14,12 @@ export const Container = styled.form`
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     height: 600px;
     padding: 2rem;
+
+    @media (max-width: 500px) {
+        width: 90%;
+        padding: 0.5rem;
+        height: 600px;
+    }
 ` 
 export const Footer = styled.div`
     position: relative;
@@ -22,7 +28,6 @@ export const Footer = styled.div`
     align-items: center;
     width: 100%;
     height: max-content;
-    margin-top: 1rem;
 `
 export const StepsCounter = styled.div`
     font-size: 1.5rem;

@@ -4,6 +4,7 @@ import { Tab, Container, Title, ButtonGroup, Button, InputGroup } from "../style
 import { FormData } from "../../interfaces";
 import { object, string, ValidationError } from 'yup';
 import  isValidCPF  from "../../../../utils/isValidCPF";
+import {FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const step1YupSchema = object({
   name: string().required("Nome é obrigatório"),
@@ -64,9 +65,9 @@ export default function Step1({data,setData, setStep}:Step1Props) {
     return (
         <Tab>
             <Container>
-                <Title>Informações Básicas do Usuário:</Title>
+                <Title>Informações do Usuário:</Title>
                 <InputGroup>
-                    <FloatingLabelInput label={"Nome "} errorMessage={errors.name} type="text" name="name" value={name} onChange={handleChange} />
+                    <FloatingLabelInput label={"Nome "} errorMessage={errors.name} type="text" name="name" value={name} onChange={handleChange}/>
                     <FloatingLabelInput label={"Sobrenome"} errorMessage={errors.lastname}  type="text" name="lastname" value={lastname} onChange={handleChange} />
                     <FloatingLabelInput label={"CPF"} errorMessage={errors.cpf} type="text" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
                     <FloatingLabelInput label={"E-mail"} errorMessage={errors.email} type="email" name="email" value={email} onChange={handleChange} />
@@ -78,7 +79,7 @@ export default function Step1({data,setData, setStep}:Step1Props) {
                         type="submit" 
                         onClick={(e) => handleNextStep(e)}
                     >
-                        Próximo
+                        Próximo <FaRegArrowAltCircleRight/>
                     </Button>
             </ButtonGroup>
         </Tab>
