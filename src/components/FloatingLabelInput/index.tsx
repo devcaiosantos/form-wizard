@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { InputWrapper, Label, Input, ErrorMessage } from "./style";
 
 interface FloatingLabelInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -8,6 +8,7 @@ interface FloatingLabelInputProps extends React.InputHTMLAttributes<HTMLInputEle
 
 const FloatingLabelInput : React.FC<FloatingLabelInputProps> = ({ label, errorMessage, ...props }) => {
     const [isFloating, setIsFloating] = useState(!!props.value);
+    const inputRef = React.createRef<HTMLInputElement>();
 
     useEffect(() => {
         setIsFloating(!!props.value);
@@ -22,12 +23,18 @@ const FloatingLabelInput : React.FC<FloatingLabelInputProps> = ({ label, errorMe
             setIsFloating(false);
         }
     };
+
+    const handleLabelClick = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
   
     return (
       <InputWrapper>
        
-        <Label focused={isFloating}>{label}</Label>
-        <Input onFocus={handleFocus} onBlur={handleBlur} autoComplete="off" {...props} />
+        <Label focused={isFloating} onClick={handleLabelClick}>{label}</Label>
+        <Input  ref={inputRef} onFocus={handleFocus} onBlur={handleBlur} autoComplete="off" {...props} />
         <ErrorMessage>
             {errorMessage}
         </ErrorMessage>

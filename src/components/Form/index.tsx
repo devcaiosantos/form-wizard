@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Footer, StepsCounter } from "./style"
+import { Form, Footer, StepsCounter } from "./style"
 import Step1 from "./Tabs/Step1";
 import Step2 from "./Tabs/Step2";
 import Step3 from "./Tabs/Step3";
@@ -8,7 +8,7 @@ import Success from "./Tabs/Success";
 import { FormData } from "./interfaces";
 import { states } from "../../utils/states";
 
-export const defaultFormData = {
+const defaultFormData = {
     step1: {
         name: "",
         lastname: "",
@@ -54,7 +54,7 @@ export default function FormComponent() {
     }
 
     return (
-        <Container>
+        <Form>
             {renderStep(currentStep)}
             <Footer>
                 {
@@ -66,6 +66,6 @@ export default function FormComponent() {
                 }
                 
             </Footer>
-        </Container>
+        </Form>
     )
 }

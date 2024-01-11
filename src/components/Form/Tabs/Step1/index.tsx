@@ -4,7 +4,7 @@ import { Tab, Container, Title, ButtonGroup, Button, InputGroup } from "../style
 import { FormData } from "../../interfaces";
 import { object, string, ValidationError } from 'yup';
 import  isValidCPF  from "../../../../utils/isValidCPF";
-import {FaRegArrowAltCircleRight } from "react-icons/fa";
+import {FaRegArrowAltCircleRight, FaUserEdit } from "react-icons/fa";
 
 const step1YupSchema = object({
   name: string().required("Nome é obrigatório"),
@@ -65,7 +65,7 @@ export default function Step1({data,setData, setStep}:Step1Props) {
     return (
         <Tab>
             <Container>
-                <Title>Informações do Usuário:</Title>
+                <Title> <FaUserEdit />Informações do Usuário:</Title>
                 <InputGroup>
                     <FloatingLabelInput label={"Nome "} errorMessage={errors.name} type="text" name="name" value={name} onChange={handleChange}/>
                     <FloatingLabelInput label={"Sobrenome"} errorMessage={errors.lastname}  type="text" name="lastname" value={lastname} onChange={handleChange} />

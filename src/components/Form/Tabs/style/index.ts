@@ -39,6 +39,9 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h2`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.2rem;
     font-weight: 600;
     color: ${({theme}) => theme.text};
@@ -46,6 +49,10 @@ export const Title = styled.h2`
     @media (max-width: 500px) {
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
+    }
+    svg{
+        font-size: 1.4rem;
+        font-weight: 800;
     }
 `
 

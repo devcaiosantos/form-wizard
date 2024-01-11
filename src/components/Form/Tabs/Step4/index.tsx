@@ -5,7 +5,10 @@ import { FormData } from "../../interfaces";
 import Loader from "../../../LoaderBouncingBalls";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { IoSave } from "react-icons/io5";
-
+import { VscOpenPreview } from "react-icons/vsc";
+import { FaRegEdit, FaUserEdit } from "react-icons/fa";
+import { IoIosPin } from "react-icons/io";
+import { GoLaw } from "react-icons/go";
 interface Step4Props {
     data: FormData,
     setStep: React.Dispatch<React.SetStateAction<number>>
@@ -36,32 +39,32 @@ export default function Step4({data, setStep}:Step4Props) {
     return (
         <Tab>
             <Container>
-                <Title>Confirmação de Informações:</Title>
+                <Title><VscOpenPreview/>Confirmação de Informações:</Title>
                 <StepContent>
-                    <StepTitle>Informações do Usuário</StepTitle>
+                    <StepTitle><FaUserEdit/>Informações do Usuário</StepTitle>
                     <ContentField>Nome: {step1.name}</ContentField> 
                     <ContentField>Sobrenome: {step1.lastname}</ContentField>
                     <ContentField>CPF: {step1.cpf}</ContentField>
                     <ContentField>E-mail: {step1.email}</ContentField>
                     <ContentField>Senha: {maskPassword(step1.password)}</ContentField>
-                    <LinkToStep onClick={()=>returnToStep(1)}>Editar informações</LinkToStep>
+                    <LinkToStep onClick={()=>returnToStep(1)}>Editar informações <FaRegEdit/></LinkToStep>
                 </StepContent>
                 <StepContent>
-                    <StepTitle>Informações de Endereço</StepTitle>
+                    <StepTitle><IoIosPin/>Informações de Endereço</StepTitle>
                     <ContentField>CEP: {step2.cep}</ContentField>
                     <ContentField>Cidade: {step2.city}</ContentField>
                     <ContentField>Estado: {step2.state}</ContentField>
                     <ContentField>Rua: {step2.street}</ContentField>
                     <ContentField>Número: {step2.number}</ContentField>
-                    <LinkToStep onClick={()=>returnToStep(2)}>Editar informações</LinkToStep>
+                    <LinkToStep onClick={()=>returnToStep(2)}>Editar informações<FaRegEdit/></LinkToStep>
                 </StepContent>
                 <StepContent>
-                    <StepTitle>Informações do Responsável</StepTitle>
+                    <StepTitle><GoLaw/>Informações do Responsável</StepTitle>
                     <ContentField>Nome: {step3.rep_name}</ContentField>
                     <ContentField>Grau de Parentesco: {step3.relationship}</ContentField>
                     <ContentField>RG: {step3.rep_rg}</ContentField>
                     <ContentField>Telefone: {step3.rep_phone}</ContentField>
-                    <LinkToStep onClick={()=>returnToStep(3)}>Editar informações</LinkToStep>
+                    <LinkToStep onClick={()=>returnToStep(3)}>Editar informações<FaRegEdit/></LinkToStep>
                 </StepContent> 
             </Container>
             

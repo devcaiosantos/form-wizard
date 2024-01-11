@@ -1,15 +1,18 @@
-export default async function getAddressByCEP(cep:string) {
-    try{
-        const response = await fetch(`https://brasilapi.com.br/api/cep/v2/${cep}`);
-        const data = await response.json();
+import axios from 'axios';
+
+export default async function getAddressByCEP(cep: string) {
+    return await axios.get(`https://brasilapi.com.br/api/cep/v2/${cep}`)
+    .then((response) => {
         return {
             status: "success",
-            data: data
+            data: response.data,
         };
-    }catch(error){
+    })
+    .catch ((error) => {
         return {
             status: "error",
-            data: []
+            message: error,
+            data: [],
         };
-    }
+    });
 }

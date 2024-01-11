@@ -22,7 +22,7 @@ export default function SubmissionSuccess({setStep, setData, defaultData}:Submis
                 <SuccessIcon />
                 <Title>Tudo certo!</Title>
                 <SuccessMessage>
-                    Cadastro realizado com sucesso
+                    Cadastro realizado com sucesso :)
                 </SuccessMessage>
                 <Button type="button" onClick={(e)=>handleNewSubmit(e)}>
                     Novo usuário <FaUserPlus />

@@ -9,6 +9,7 @@ import getAddressByCEP from "../../../../services/brasilAPI/getAddressByCEP";
 import isValidCEP  from "../../../../utils/isValidCEP";
 import useDebounceStr from "../../../../hooks/useDebounceStr";
 import {FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { IoIosPin } from "react-icons/io";
 
 const step2YupSchema = object({
     cep: string().required().min(9).max(9).test('valid-cep', 'CEP inválido', (value) => isValidCEP(value)),
@@ -76,7 +77,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
     return (
         <Tab>
             <Container>
-                <Title>Endereço:</Title>
+                <Title><IoIosPin/> Endereço:</Title>
                 <InputGroup>
                     <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
                     <FloatingLabelInput label="Cidade" errorMessage={errors.city} type="text" name="city" value={city} onChange={handleChangeInput}/>

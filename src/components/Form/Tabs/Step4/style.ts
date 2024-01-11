@@ -33,15 +33,21 @@ export const ContentField = styled.span`
     width: 100%;
     gap: 1rem;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const LinkToStep = styled.a`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.3rem;
     font-size: 0.8;
     font-weight: 500;
     color: ${({theme}) => theme.primary};
     cursor: pointer;
     transition: 0.2s;
-    text-align: right;
     width: 100%;
     &:hover {
         color: ${({theme}) => theme.secondary};
