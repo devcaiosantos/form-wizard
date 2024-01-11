@@ -3,7 +3,7 @@ import { StepContent, StepTitle, ContentField, LinkToStep} from "./style";
 import { Tab, Container, Title, ButtonGroup, Button } from "../style";
 import { FormData } from "../../interfaces";
 import Loader from "../../../LoaderBouncingBalls";
-import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { IoSave } from "react-icons/io5";
 
 interface Step4Props {
