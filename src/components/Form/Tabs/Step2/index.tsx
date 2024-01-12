@@ -51,6 +51,7 @@ export default function Step2({data, setData, setStep}:Step2Props) {
             const maskedCEP = value.replace(/\D/g, "").replace(/(\d{5})(\d{3})/g, "$1-$2")
             newStep2 = { ...data.step2, [name]: maskedCEP };
         }
+
         setData({ ...data, step2: newStep2 });
     }
     
@@ -79,13 +80,13 @@ export default function Step2({data, setData, setStep}:Step2Props) {
             <Container>
                 <Title><IoIosPin/> Endereço:</Title>
                 <InputGroup>
-                    <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="text" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
+                    <FloatingLabelInput label="CEP" errorMessage={errors.cep} type="tel" name="cep" maxLength={9} value={cep} onChange={handleChangeInput}/>
                     <FloatingLabelInput label="Cidade" errorMessage={errors.city} type="text" name="city" value={city} onChange={handleChangeInput}/>
                     <FloatingLabelSelect label="Estado" errorMessage={errors.state} name="state" value={state} onChange={handleChangeInput}>
                         {states.map((state,i) => <option key={i} value={state.ac}>{state.name}</option>)}
                     </FloatingLabelSelect>
                     <FloatingLabelInput label="Rua" errorMessage={errors.street} type="text" name="street" value={street} onChange={handleChangeInput}/>
-                    <FloatingLabelInput label="Número" errorMessage={errors.number} type="number" name="number" min={1} value={number} onChange={handleChangeInput}/>
+                    <FloatingLabelInput label="Número" errorMessage={errors.number} type="number" step={1} name="number" min={1} value={number} onChange={handleChangeInput}/>
                 </InputGroup>            
             </Container>
             <ButtonGroup>

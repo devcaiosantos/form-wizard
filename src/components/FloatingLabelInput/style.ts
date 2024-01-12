@@ -19,7 +19,7 @@ export const Input = styled.input`
   &:focus {
     border-color: ${({theme}) => theme.primary};
     outline: none;
-  }
+  };
 `;
 
 export const Label = styled.label<LabelProps>`

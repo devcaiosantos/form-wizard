@@ -68,8 +68,8 @@ export default function Step3({data,setData,setStep}:Step3Props) {
                 <InputGroup>
                     <FloatingLabelInput label="Nome" errorMessage={errors.rep_name} type="text" name="rep_name" value={rep_name} onChange={handleChange}/>
                     <FloatingLabelInput label="Grau de parentesco" errorMessage={errors.relationship} type="text" name="relationship" value={relationship} onChange={handleChange}/>
-                    <FloatingLabelInput label="RG" errorMessage={errors.rep_rg} type="text" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
-                    <FloatingLabelInput label="Telefone" errorMessage={errors.rep_phone} type="phone" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
+                    <FloatingLabelInput label="RG" errorMessage={errors.rep_rg} type="tel" name="rep_rg" maxLength={12} value={rep_rg} onChange={handleChange}/>
+                    <FloatingLabelInput label="Telefone" errorMessage={errors.rep_phone} type="tel" name="rep_phone" maxLength={15} value={rep_phone} onChange={handleChange}/>
                 </InputGroup>
             </Container>
             <ButtonGroup>

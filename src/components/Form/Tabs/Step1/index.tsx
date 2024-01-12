@@ -25,11 +25,13 @@ export default function Step1({data,setData, setStep}:Step1Props) {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.currentTarget;
-        
+        console.log(name, value)
         let newStep1 = { ...data.step1, [name]: value };
 
         if(name == "cpf"){
+            
             const maskedCPF = value.replace(/\D/g, "").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4")
+            console.log(maskedCPF)
             newStep1 = { ...data.step1, [name]: maskedCPF };
         }
 
@@ -69,7 +71,7 @@ export default function Step1({data,setData, setStep}:Step1Props) {
                 <InputGroup>
                     <FloatingLabelInput label={"Nome "} errorMessage={errors.name} type="text" name="name" value={name} onChange={handleChange}/>
                     <FloatingLabelInput label={"Sobrenome"} errorMessage={errors.lastname}  type="text" name="lastname" value={lastname} onChange={handleChange} />
-                    <FloatingLabelInput label={"CPF"} errorMessage={errors.cpf} type="text" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
+                    <FloatingLabelInput label={"CPF"} errorMessage={errors.cpf} type="tel" name="cpf" maxLength={14} value={cpf} onChange={handleChange}  />
                     <FloatingLabelInput label={"E-mail"} errorMessage={errors.email} type="email" name="email" value={email} onChange={handleChange} />
                     <FloatingLabelInput label={"Senha"} errorMessage={errors.password} type="password" name="password" value={password} onChange={handleChange} />
                 </InputGroup>

@@ -3,12 +3,12 @@ import { Tab, Button } from "../style"
 import { FormData } from "../../interfaces"
 import { FaUserPlus } from "react-icons/fa";
 
-interface SubmissionSuccessProps{
+interface SuccessProps{
     setStep: React.Dispatch<React.SetStateAction<number>>,
     setData: React.Dispatch<React.SetStateAction<FormData>>,
     defaultData: FormData
 }
-export default function SubmissionSuccess({setStep, setData, defaultData}:SubmissionSuccessProps){
+export default function Success({setStep, setData, defaultData}:SuccessProps){
 
     const handleNewSubmit = (e:React.MouseEvent<HTMLButtonElement> ) => {
         e.preventDefault();
