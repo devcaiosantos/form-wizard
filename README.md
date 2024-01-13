@@ -1,5 +1,8 @@
 # Form Wizard
 Autor: Caio Luiz dos Santos 
+
+URL PROJETO PUBLICADO: https://form-wizard-eta.vercel.app/
+
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter o [Node.js](https://nodejs.org/) instalado na sua máquina.
@@ -30,7 +33,7 @@ cd wizard-form
  
  1.  Duplique o arquivo `env.example` e renomeie-o para `.env`.
     
- 2.  Abra o arquivo `.env` e altere o valor da variável `PORT`  de acordo com sua preferência. 
+ 2.  Abra o arquivo `.env` e altere o valor da variável `VITE_PORT`  de acordo com sua preferência. 
  
 ### 5. Execução
 
@@ -46,7 +49,7 @@ Para iniciar o servidor de desenvolvimento, execute o seguinte comando:
 Isso iniciará o aplicativo em modo de desenvolvimento.
 Abra no seu navegador o endereço http://localhost na porta que está configurada nas variáveis de ambiente.
  Ex:
- `PORT=3000`
+ `VITE_PORT=3000`
  Abra:
  `http://localhost:3000`
 
